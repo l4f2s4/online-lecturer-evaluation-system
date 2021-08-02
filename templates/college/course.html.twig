@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% if app.user.title=="superadmin" %}
+  {% include('admin/adminnavbar.html.twig') %}
+      <main class="content">
+      <!-- start -->
+        <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+                <div class="mdc-layout-grid__inner">
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-9">
+                    <section class="purchase__card_section">
+                      <p><span class="badge bg-primary mr-1">{{ department |length }}</span> <span style="color:black;">Department Course</span></p>
+                    </section>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--end-->
+
+            <!--start table-->
+          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card table-responsive" style="display:block;">
+                <div class="card" style="padding-top:3%;">
+                 <div class="card-body">
+                    <table id="zero_config" class="table tablesorter mt-5">
+                      <thead class="text-secondary">
+                        <tr>
+                          <th>#</th>
+                          <th class="text-left text-white font-weight-bold">Department Name</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                       {% for temp,show in department %}
+                            <tr>
+                              <td>{{ temp +1 }}</td>
+                              <td class="text-left">{{ show.name }}</td>
+                              <td>
+                                 <a href="/evaluate/admin/view/Department/course/{{show.id}}" class="row mdc-button" data-mdc-auto-init="MDCRipple">view course</a>
+                              </td>
+
+                            </tr>
+                       {% endfor %}
+                        </tbody>
+                      </table>
+                      </div>
+                 </div>
+              </div>
+            </div>
+            <!--end table -->
+      </main>
+</div>
+        <script>
+        /****************************************
+         *       Basic Table                   *
+         ****************************************/
+        $('#zero_config').DataTable();
+    </script>
+
+{% endif %}
+
+{% endblock %}

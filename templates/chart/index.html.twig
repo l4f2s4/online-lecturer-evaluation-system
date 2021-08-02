@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block title %}Graphically Evaluation Report {% endblock %}
+{% block body %}
+{% if app.user %}
+ {% if app.user.title == "superadmin" %}
+      {% include('setting/index.html.twig') %}
+  {% else %}
+      {% include('hods/hodsnavbar.html.twig') %}
+  {% endif %}
+<main class="content">
+  <div class="row">
+          <div class="col-12">
+            <div class="card card-chart">
+              <div class="card-header ">
+                <div class="row">
+                  <div class="col-sm-6 text-left">
+                    <h2 class="card-category text-white">Average Performance Per Program</h2>
+                  </div>
+               <div class="card-body">
+               <div class="chat-area">
+                     {{ render_chart(chart) }}
+               </div>
+               </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endif %}
+{% endblock %}

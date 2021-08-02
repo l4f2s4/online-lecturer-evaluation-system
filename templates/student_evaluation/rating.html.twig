@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+      {% include('student_evaluation/index.html.twig') %}
+      <!-- start main page -->
+      <main class="content">
+        <!-- Profile intro -->
+         <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+                <div class="mdc-layout-grid__inner">
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                    <section class="purchase__card_section">
+                      <p>
+                       <i class="material-icons mdc-theme--primary mr-1">star</i><span class="font-weight-bold" style="color:black;"> Rating Scale</span>
+                      </p>
+                    </section>
+                  </div>
+                </div>
+              </div>
+            </div>
+           </div>
+       <!-- end intro -->
+       <!-- rating -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+               <div class="mdc-card table-responsive" >
+                <div class="card" style="padding-top:2%;">
+                    <div class="card-body">
+                    <table  class="table tablesorter">
+                      <thead >
+                        <tr >
+                          <th class="text-left text-white font-weight-bold">Score</th>
+                          <th class="text-left text-white font-weight-bold">1</th>
+                          <th class="text-left text-white font-weight-bold">2</th>
+                          <th class="text-left text-white font-weight-bold">3</th>
+                          <th class="text-left text-white font-weight-bold">4</th>
+                          <th class="text-left text-white font-weight-bold">5</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                            <tr>
+                                <td class="text-left text-white font-weight-bold">
+                                       Rank
+                                 </td>
+                                <td class="text-left text-white font-weight-bold">
+                                    Never
+                                </td>
+                                 <td class="text-left text-white font-weight-bold">
+                                    Rarely
+                                 </td>
+                                 <td class="text-left text-white font-weight-bold">
+                                       Sometimes
+                                 </td>
+                                <td class="text-left text-white font-weight-bold">
+                                     Often
+                                </td>
+                                 <td class="text-left text-white font-weight-bold">
+                                  Always
+                                  </td>
+                            </tr>
+
+                        </tbody>
+                      </table>
+              </div>
+            </div>
+            </div>
+            </div>
+
+       <!-- end rating -->
+
+      </main>
+      <!-- end main page -->
+
+{% endblock %}

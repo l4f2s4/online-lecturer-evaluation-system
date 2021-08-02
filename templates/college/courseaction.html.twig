@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% if app.user %}
+  {% include('admin/adminnavbar.html.twig') %}
+      <!-- start main page -->
+      <main class="content">
+       <!-- Profile intro -->
+         <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+                <div class="mdc-layout-grid__inner">
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-10">
+                    <section class="purchase__card_section">
+                      <p>
+                       <i class="material-icons mdc-theme--primary mr-1">add_box</i>  <span class="bold" style="color:black;">Course Register</span>
+                      </p>
+                    </section>
+                  </div>
+                </div>
+              </div>
+            </div>
+           </div>
+       <!-- end intro -->
+
+       <!-- start form -->
+             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+               <section class="mdc-card__supporting-text">
+               <!-- form start -->
+                <form  action="#" method="post" class="mt-5">
+                  <div class="mdc-layout-grid__inner">
+                  <!--current -->
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop">
+                      <div class="template-demo">
+                        <div id="demo-tf-box-leading-wrapper">
+                          <div id="tf-box-leading-test" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
+
+                            <input type="text" placeholder="Enter Course Name" name="cname"  class="mdc-text-field__input">
+                            <div class="mdc-text-field__bottom-line"></div>
+                          </div>
+                           <p class="mdc-text-field-helper-text--validation-msg text-red" id="name-validation-msg" style="font-size:.75rem;">
+                                {% for messages in app.flashes('cname') %}
+                                    {{ messages}}
+                               {% endfor %}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                      <!--current -->
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop">
+                      <div class="template-demo">
+                        <div id="demo-tf-box-leading-wrapper">
+                          <div id="tf-box-leading-test" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
+
+                            <input type="text" placeholder="Enter Course Short Name" name="cshort"  class="mdc-text-field__input">
+                            <div class="mdc-text-field__bottom-line"></div>
+                          </div>
+                           <p class="mdc-text-field-helper-text--validation-msg text-red" id="name-validation-msg" style="font-size:.75rem;">
+                                {% for messages in app.flashes('cshort') %}
+                                    {{ messages}}
+                               {% endfor %}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- submit action -->
+                     <div class="mdc-layout-grid__cell  mdc-layout-grid__cell--span-3-desktop">
+                          <p class="align-item-center">
+                                   <button type="submit" class="mdc-button mdc-button--raised primary-filled-button text-lowercase mt-2 mb-0" data-mdc-auto-init="MDCRipple">
+                                        Add
+                                    </button>
+                               </p>
+                     </div>
+                    <!-- end submit action -->
+
+                   </form>
+                   <!-- end form -->
+                 </section>
+                 </div>
+                 </div>
+
+         <!-- end form -->
+
+      </main>
+      <!-- end main page -->
+{% endif %}
+{% endblock %}

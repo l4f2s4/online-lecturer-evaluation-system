@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% if app.user %}
+ {% if app.user.title == "superadmin" %}
+      {% include('setting/index.html.twig') %}
+  {% endif %}
+      <!-- start main page -->
+      <main class="content">
+       <!-- Profile intro -->
+         <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+                <div class="mdc-layout-grid__inner">
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-10">
+                    <section class="purchase__card_section">
+                      <p>
+                       <i class="material-icons mdc-theme--primary mr-1">settings</i>  <span class="font-weight-bold" style="color:black;"> Evaluation setting</span>
+                      </p>
+                    </section>
+                  </div>
+                </div>
+              </div>
+            </div>
+           </div>
+       <!-- end intro -->
+
+       				<div class="row">
+						<div class="col-md-12">
+                        {% if findevaluate|length !=0 %}
+							<!-- Annual Leave -->
+							{% for lead in findevaluate %}
+							<div class="card leave-box" id="leave_annual">
+								<div class="card-body" style="background:white;">
+									<div class="h3 card-title with-switch">
+										{% if lead.addstatus=="active" %}
+
+										<div class="onoffswitch">
+										   <h4 class="text-left text-lowercase" style="color:black;"> Active</h4>
+											<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switch_annual" checked>
+											<label class="onoffswitch-label" for="switch_annual">
+												<a href="{{path('settingswitchoff')}}" role="button" class="onoffswitch-inner"></a>
+											</label>
+										</div>
+										{% else %}
+										<div class="onoffswitch">
+											<h4 class="text-left text-lowercase" style="color:red;"> Inactive</h4>
+											<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switch_annual">
+											<label class="onoffswitch-label" for="switch_annual">
+												<a href="{{path('settingswitch')}}" role="button" class="onoffswitch-inner"></a>
+											</label>
+										</div>
+										{% endif%}
+									</div>
+
+
+
+								</div>
+							</div>
+							<!-- /Annual Leave -->
+							<div class="card leave-box" id="leave_annual">
+								<div class="card-body" style="background:white;">
+									<div class="h3 card-title with-switch">
+										{% if lead.semester=="semester1" %}
+										<div class="onoffswitch">
+										   <h6 class="text-left text-lowercase" style="color:black;"> Semester1</h6>
+											<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switch_annual" checked>
+											<label class="onoffswitch-label" for="switch_annual">
+												<a href="{{path('settingsemester2')}}" role="button" class="onoffswitch-inner"></a>
+											</label>
+										</div>
+										{% else %}
+
+											<div class="onoffswitch">
+											 <h6 class="text-left text-lowercase" style="color:black;"> Semester1</h6>
+											<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switch_annual">
+											<label class="onoffswitch-label" for="switch_annual">
+												<a href="{{path('settingsemester1')}}" role="button" class="onoffswitch-inner"></a>
+											</label>
+										</div>
+										{% endif%}
+									</div>
+								</div>
+							</div>
+							<!-- /Annual Leave -->
+
+                            {% endfor %}
+						{% else %}
+                           	<div class="card leave-box" id="leave_annual">
+								<div class="card-body">
+									<div class="h5 card-title with-switch">
+										<span style="color: red;">No available setting please</span>
+									</div>
+								</div>
+							</div>
+							<!-- /Annual Leave -->
+						{% endif %}
+						</div>
+					</div>
+	{% for message in app.flashes('network') %}
+        <div class="alert alert-info alert-dismissible fade show">
+            {{ message }}
+       </div>
+   {% endfor %}
+      </main>
+      <!-- end main page -->
+{% endif %}
+{% endblock %}

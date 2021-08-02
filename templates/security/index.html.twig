@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome To  OLES Forgot Password Area{% endblock %}
+
+{% block body %}
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-md-6 col-8 col-lg-4 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center" style="font-weight:bold;">Enter your email to get a password reset link</h5>
+            <form class="form-signin" method="post">
+                 {% for messages in app.flashes('verify') %}
+		     		  <p class="text-center alert" style="background:maroon;font-weight:bold;">
+                            {{ messages }}
+					  </p>
+				    {% endfor %}
+
+              <div class="form-label-group">
+                <input type="email"   name="kind" id="inputEmail" placeholder="Enter email" class="form-control" style="color:white;"  required autofocus>
+                <label for="inputEmail">Email Address</label>
+              </div>
+              <button class="form-control btn  btn-block text-uppercase" style="background:green;color:white;" type="submit">Get link</button>
+               <hr class="my-4">
+                <a href="{{path('app_login')}}" class="form-control btn btn-lg  btn-block text-uppercase" style="background:blue;color:white;">Login</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--end reset builder -->
+{% endblock %}
+

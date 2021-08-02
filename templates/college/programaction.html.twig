@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% if app.user %}
+  {% include('admin/adminnavbar.html.twig') %}
+      <!-- start main page -->
+      <main class="content">
+       <!-- Profile intro -->
+         <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+                <div class="mdc-layout-grid__inner">
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-10">
+                    <section class="purchase__card_section">
+                      <p>
+                       <i class="material-icons mdc-theme--primary mr-1">add_box</i>  <span class="bold" style="color:black;">Assign Moduli To Course</span>
+                      </p>
+                    </section>
+                  </div>
+                </div>
+              </div>
+            </div>
+           </div>
+       <!-- end intro -->
+
+       <!-- start form -->
+             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+               <section class="mdc-card__supporting-text">
+               {% if findprogram|length != 0 %}
+               <!-- form start -->
+                <form  action="#" method="post" class="mt-5">
+                  <div class="mdc-layout-grid__inner">
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop">
+                     <!-- assign moduli field -->
+                   <div class="mdc-layout-grid__cell  mdc-layout-grid__cell--span-8-desktop">
+                      <div class="mdc-text-field mdc-text-field--box text-secondary w-100" >
+                             <select  class="mdc-text-field__input" id="program" name="program">
+                                  <option value="" selected>Select moduli</option>
+                                   {% for dept in findprogram %}
+                                         <option value="{{ dept.pname }}">{{ dept.pname }}</option>
+                                   {% endfor %}
+                             </select>
+                        </div>
+                   </div>
+                    <!-- end dept field-->
+
+                    <!-- submit action -->
+                     <div class="mdc-layout-grid__cell  mdc-layout-grid__cell--span-3-desktop">
+                          <p class="align-item-center">
+                                   <button type="submit" class="mdc-button mdc-button--raised primary-filled-button text-lowercase mt-2 mb-0" data-mdc-auto-init="MDCRipple">
+                                        Add
+                                    </button>
+                               </p>
+                     </div>
+                    <!-- end submit action -->
+
+                   </form>
+                   <!-- end form -->
+                     {% else %}
+                     <div class="mdc-layout-grid__cell  mdc-layout-grid__cell--span-12-desktop">
+                          <p class="align-item-center" style="color:red;">
+                                  No moduli available at this moment,please add program first
+                          </p>
+                     </div>
+                 {% endif %}
+                 </section>
+                 </div>
+                 </div>
+
+         <!-- end form -->
+
+      </main>
+      <!-- end main page -->
+{% endif %}
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% include('student_evaluation/index.html.twig') %}
+      <!-- start main page -->
+      <main class="content">
+        <!-- Profile intro -->
+         <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+                <div class="mdc-layout-grid__inner">
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                    <section class="purchase__card_section">
+                      <p>
+                       <i class="material-icons mdc-theme--primary mr-1">description</i>  <span class="font-weight-bold" style="color:black;"> Instruction</span>
+                      </p>
+                    </section>
+                  </div>
+                </div>
+              </div>
+            </div>
+           </div>
+       <!-- end intro -->
+          <!-- start form -->
+             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+            <!-- Instructions -->
+              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                <div class="card" style="padding-top:2%;">
+                    <div class="card-body">
+                    <ul style="list-style:lower-alpha;">
+                     <li>This evaluation form is part of the NIT QUALITY ASSURANCE unit regular efforts to maintain quality teaching.</li>
+                     <li>We take your response seriously, therefore we hope that you will also take this exercise seriously
+                      and spare sometime to fill the form.</li>
+                      <li>Your answers are anonymous and will remain confidential,thus you are not required to write your name or student
+                       registration number.</li>
+                       <li> Also be assured that your answers in this form will not affect you in any way.</li>
+                       <li>Please rate the teaching staff using the rating scale below.</li>
+                    </ul>
+                    </div>
+              </div>
+          </div>
+
+      </main>
+      <!-- end main page -->
+{% endblock %}

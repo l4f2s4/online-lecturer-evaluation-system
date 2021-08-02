@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% if app.user.title=="superadmin" %}
+  {% include('admin/adminnavbar.html.twig') %}
+      <main class="content">
+      <!-- start -->
+        <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+                <div class="mdc-layout-grid__inner">
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-9">
+                    <section class="purchase__card_section">
+                      <p><span class="badge bg-primary mr-1">{{ member |length }}</span> <span style="color:black;">Department Member</span></p>
+                    </section>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--end-->
+
+            <!--start table-->
+          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card table-responsive" style="display:block;">
+                <div class="card" style="padding-top:3%;">
+                 <div class="card-body">
+                    <table id="zero_config" class="table tablesorter mt-5">
+                      <thead class="text-secondary">
+                        <tr>
+                          <th>#</th>
+                          <th class="text-left text-white font-weight-bold">Staff Name</th>
+                          <th class="text-left text-white font-weight-bold"> Email </th>
+                          <th class="text-left text-white font-weight-bold"> Status </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                       {% for temp,show in member %}
+                            <tr>
+                              <td>{{ temp +1 }}</td>
+                              <td class="text-left">{{ show.username }}</td>
+                              <td class="text-left">{{ show.email }}</td>
+                              <td class="text-left">{{ show.title }}</td>
+                            </tr>
+                       {% endfor %}
+                        </tbody>
+                      </table>
+                      </div>
+                 </div>
+              </div>
+            </div>
+            <!--end table -->
+      </main>
+</div>
+        <script>
+        /****************************************
+         *       Basic Table                   *
+         ****************************************/
+        $('#zero_config').DataTable();
+    </script>
+
+{% endif %}
+
+{% endblock %}

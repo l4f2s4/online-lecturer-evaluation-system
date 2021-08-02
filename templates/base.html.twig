@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta name="robots" content="noindex,nofollow">
+        <title>{% block title %}Online Evaluation System {% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('bootstrap/css/style.css')}}">
+        <link rel="stylesheet" href="{{ asset('bootstrap/demo/demo.css')}}">
+        <link rel="stylesheet" href="{{ asset('bootstrap/css/black-dashboard.css?v=1.0.0')}}">
+        <link rel="stylesheet" href="{{ asset('bootstrap/css/materialdesignicons.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('bootstrap/css/dataTables.bootstrap.css')}}">
+        <link rel="stylesheet" href="{{ asset('bootstrap/css/dashboard.css')}}">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+         {% endblock %}
+         <script src="{{ asset('bootstrap/js/material-components-web.min.js') }}" ></script>
+         <script src="{{ asset('bootstrap/js/jquery.min.js') }}" ></script>
+         <script src="{{ asset('bootstrap/js/misc.js') }}" ></script>
+         <script src="{{ asset('bootstrap/js/material.js') }}" ></script>
+         <script src="{{ asset('bootstrap/js/datatables.min.js') }}" ></script>
+         <script src="{{ asset('bootstrap/js/dashboard.js') }}" ></script>
+         <script src="{{ asset('bootstrap/demo/demo.js') }}" ></script>
+         <script src="{{ asset('bootstrap/js/text.js') }}" ></script>
+         <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}" ></script>
+         <script src="{{ asset('bootstrap/js/black-dashboard.min.js?v=1.0.0') }}" ></script>
+         <script src="{{ asset('bootstrap/js/popper.min.js') }}" ></script>
+    </head>
+    <body  onload=" init();">
+        {% block body %}{% endblock %}
+    </body>
+</html>

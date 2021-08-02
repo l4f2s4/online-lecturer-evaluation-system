@@ -1,0 +1,367 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% if app.user %}
+ {% if app.user.title == "superadmin" %}
+      {% include('setting/index.html.twig') %}
+  {% endif %}
+      <!-- start main page -->
+      <main class="content">
+       <!-- Profile intro -->
+         <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+                <div class="mdc-layout-grid__inner">
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-10">
+                    <section class="purchase__card_section">
+                      <p>
+                       <i class="material-icons mdc-theme--primary mr-1">assessment</i>  <span class="font-weight-bold" style="color:black;"> NIT Student Module Evaluation Form</span>
+                      </p>
+                    </section>
+                  </div>
+                </div>
+              </div>
+            </div>
+           </div>
+       <!-- end intro -->
+          <!-- start form -->
+             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+             <form action="#" method="post">
+              <h4 class="font-weight-bold pl-2" style="color:black;"> 1.General Information</h4>
+               <section class="mdc-card__supporting-text">
+                  <div class="mdc-layout-grid__inner">
+                  <!-- Name area-->
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+                      <div class="template-demo">
+                        <div id="demo-tf-box-leading-wrapper">
+                          <div id="tf-box-leading-test" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
+                            <i class="material-icons mdc-text-field__icon" tabindex="0">person</i>
+                            <input required  pattern=".{2,}" type="text" placeholder="Name of the academic staff" name="aname"  class="mdc-text-field__input text-lowercase font-weight-bold">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end  name -->
+
+                       <!-- department field -->
+                   <div class="mdc-layout-grid__cell  mdc-layout-grid__cell--span-6-desktop">
+                      <div class="mdc-text-field mdc-text-field--box text-secondary w-100" >
+                             <select  class="mdc-text-field__input font-weight-bold" id="dept" name="dept">
+                                  <option value="" selected>Select Department</option>
+
+                             </select>
+                        </div>
+                   </div>
+                    <!-- end dept field-->
+                      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+                      <div class="template-demo">
+                        <div id="demo-tf-box-leading-wrapper">
+                          <div id="tf-box-leading-test" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
+                             <i class="material-icons mdc-text-field__icon" tabindex="0">view_module</i>
+                            <input required pattern=".{2,}" type="text" placeholder="Module Name" name="mname"  class="mdc-text-field__input text-lowercase font-weight-bold">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end second  name &  name area -->
+                   <!-- moduli code Area-->
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+                      <div class="template-demo">
+                        <div id="demo-tf-box-leading-wrapper">
+                          <div id="tf-box-leading-example" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
+                             <i class="material-icons mdc-text-field__icon" tabindex="0">subject</i>
+                            <input required  type="number" name="mcode" placeholder="Moduli Code" class="mdc-text-field__input text-lowercase font-weight-bold" aria-controls="name-validation-message">
+                          </div>
+                            <p class="text-red" id="name-validation-msg">
+                               {% for messages in app.flashes('email') %}
+                                    {{ messages}}
+                               {% endfor %}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                       <!-- date area-->
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop">
+                      <div class="template-demo">
+                        <div id="demo-tf-box-leading-wrapper">
+                          <div id="tf-box-leading-test" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
+                            <i class="material-icons mdc-text-field__icon" tabindex="0">calender_today</i>
+                            <input required  pattern=".{2,}" type="date" placeholder="Date" name="date"  class="mdc-text-field__input text-lowercase font-weight-bold">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end  date-->
+
+                       <!-- semester field -->
+                   <div class="mdc-layout-grid__cell  mdc-layout-grid__cell--span-4-desktop">
+                      <div class="mdc-text-field mdc-text-field--box text-secondary w-100" >
+                             <select  class="mdc-text-field__input font-weight-bold" id="semester" name="semester">
+                                  <option value="" selected>Select Semester</option>
+                                  <option value="semester1" >Semester one</option>
+                                  <option value="semester2" >Semester two</option>
+                             </select>
+                        </div>
+                   </div>
+                    <!-- end semester field-->
+                       <!-- year area-->
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop">
+                      <div class="template-demo">
+                        <div id="demo-tf-box-leading-wrapper">
+                          <div id="tf-box-leading-test" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
+                            <i class="material-icons mdc-text-field__icon" tabindex="0">calender_today</i>
+                            <input required  pattern=".{2,}" type="text" placeholder="Academic year" name="ayear"  class="mdc-text-field__input text-lowercase font-weight-bold">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end  year -->
+                     <div class="mdc-layout-grid__cell  mdc-layout-grid__cell--span-7-desktop">
+                          <p class="align-item-center text-red">
+                                   {% for messages in app.flashes('success') %}
+                                      {{ messages}}
+                                   {% endfor %}
+                               </p>
+                     </div>
+                     </section>
+                     <div>
+                    </div>
+          <!-- Instructions -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                <div class="card" style="padding-top:2%;">
+                  <div class="card-header">
+                     <h4 class="card-title text-white font-weight-bold"> 2.Instructions</h4>
+                  </div>
+                    <div class="card-body">
+                    <ul style="list-style:lower-alpha;">
+                     <li>This evaluation form is part of the NIT QUALITY ASSURANCE unit regular efforts to maintain quality teaching.</li>
+                     <li>We take your response seriously, therefore we hope that you will also take this exercise seriously
+                      and spare sometime to fill the form.</li>
+                      <li>Your answers are anonymous and will remain confidential,thus you are not required to write your name or student
+                       registration number.</li>
+                       <li> Also be assured that your answers in this form will not affect you in any way.</li>
+                       <li>Please rate the teaching staff using the rating scale below.</li>
+                    </ul>
+                    </div>
+              </div>
+          </div>
+
+       <!-- rating -->
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+               <div class="mdc-card table-responsive" >
+                <div class="card" style="padding-top:2%;">
+                  <div class="card-header">
+                     <h4 class="card-title text-white font-weight-bold"> 3. Rating Scale</h4>
+                  </div>
+                    <div class="card-body">
+                    <table  class="table tablesorter">
+                      <thead >
+                        <tr >
+                          <th class="text-left text-white font-weight-bold">Score</th>
+                          <th class="text-left text-white font-weight-bold">1</th>
+                          <th class="text-left text-white font-weight-bold">2</th>
+                          <th class="text-left text-white font-weight-bold">3</th>
+                          <th class="text-left text-white font-weight-bold">4</th>
+                          <th class="text-left text-white font-weight-bold">5</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                            <tr>
+                                <td class="text-left text-white font-weight-bold">
+                                       Rank
+                                 </td>
+                                <td class="text-left text-white font-weight-bold">
+                                    Never
+                                </td>
+                                 <td class="text-left text-white font-weight-bold">
+                                    Rarely
+                                 </td>
+                                 <td class="text-left text-white font-weight-bold">
+                                       Sometimes
+                                 </td>
+                                <td class="text-left text-white font-weight-bold">
+                                     Often
+                                </td>
+                                 <td class="text-left text-white font-weight-bold">
+                                  Always
+                                  </td>
+                            </tr>
+
+                        </tbody>
+                      </table>
+              </div>
+            </div>
+            </div>
+            </div>
+
+       <!-- end rating -->
+         <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+               <div class="mdc-card table-responsive" >
+                <div class="card" style="padding-top:2%;">
+                  <div class="card-header">
+                     <h4 class="card-title text-white font-weight-bold"> 4. Evaluation</h4>
+                  </div>
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                          <section class="purchase__card_section">
+                                   <a href="{{path('question_edit')}}" class="mdc-button mdc-button--raised secondary-filled-button text-lowercase mb-0" data-mdc-auto-init="MDCRipple">
+                                        Edit Questions
+                                    </a>
+                           </section>
+                  </div>
+                    <div class="card-body">
+                    <table  class="table tablesorter">
+                      <thead >
+                        <tr >
+                          <th class="text-left text-white font-weight-bold">S/N</th>
+                          <th class="text-left text-white font-weight-bold">Evaluation criteria</th>
+                          <th class="text-left text-white font-weight-bold">Score</th>
+                        </tr>
+                      </thead>
+                      <tbody class="font-weight-bold text-red">
+
+                         {% for show in findevaluate %}
+                            <tr>
+                                <td class="text-left text-white font-weight-bold">
+                                       Q1
+                                 </td>
+                                <td class="text-left">
+                                    {{show.q1}}
+                                </td>
+                                 <td >
+                                    <input type="number" name="mark1" style="width:80px;" />
+                                  </td>
+                            </tr>
+                             <tr>
+                                   <td class="text-left text-white font-weight-bold">
+                                       Q2
+                                 </td>
+                                <td class="text-left">
+                                    {{show.q2}}
+                                </td>
+                                 <td >
+                                    <input type="number" name="mark2" style="width:80px;" />
+                                  </td>
+                            </tr>
+                                <tr>
+                                  <td class="text-left text-white font-weight-bold">
+                                       Q3
+                                 </td>
+                                <td class="text-left">
+                                    {{show.q3}}
+                                </td>
+                                 <td >
+                                    <input type="number" name="mark3" style="width:80px;" />
+                                  </td>
+                            </tr>
+                                <tr>
+                                 <td class="text-left text-white font-weight-bold">
+                                       Q4
+                                 </td>
+                                <td class="text-left">
+                                    {{show.q4}}
+                                </td>
+                                 <td >
+                                    <input type="number" name="mark4" style="width:80px;" />
+                                  </td>
+                            </tr>
+                                <tr>
+                                  <td class="text-left text-white font-weight-bold">
+                                       Q5
+                                 </td>
+                                <td class="text-left">
+                                    {{show.q5}}
+                                </td>
+                                 <td >
+                                    <input type="number" name="mark5" style="width:80px;" />
+                                  </td>
+                            </tr>
+                                <tr>
+                                   <td class="text-left text-white font-weight-bold">
+                                       Q6
+                                 </td>
+                                <td class="text-left">
+                                    {{show.q6}}
+                                </td>
+                                 <td >
+                                    <input type="number" name="mark6" style="width:80px;" />
+                                  </td>
+                            </tr>
+                                <tr>
+                                   <td class="text-left text-white font-weight-bold">
+                                       Q7
+                                 </td>
+                                <td class="text-left">
+                                    {{show.q7}}
+                                </td>
+                                 <td >
+                                    <input type="number" name="mark7" style="width:80px;" />
+                                  </td>
+                            </tr>
+                                <tr>
+                                 <td class="text-left text-white font-weight-bold">
+                                       Q8
+                                 </td>
+                                <td class="text-left">
+                                    {{show.q8}}
+                                </td>
+                                 <td >
+                                    <input type="number" name="mark8" style="width:80px;" />
+                                  </td>
+                            </tr>
+                            <tr>
+                             <td class="text-left text-white font-weight-bold">
+                                       Q9
+                                 </td>
+                                <td class="text-left">
+                                    {{show.q9}}
+                                </td>
+                                 <td >
+                                    <input type="number" name="mark9" style="width:80px;" />
+                                  </td>
+                            </tr>
+                            <tr>
+                             <td>&nbsp;</td>
+                             <td class="text-right font-weight-bold">Total</td>
+                             <td class="text-center"></td>
+                            </tr>
+                         {% endfor %}
+
+                        </tbody>
+                      </table>
+              </div>
+            </div>
+            </div>
+            </div>
+            <!-- start -->
+             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+               <div class="mdc-card" >
+                <div class="card" style="padding-top:2%;">
+                  <div class="card-header">
+                     <h4 class="card-title text-white font-weight-bold"> Any other comment</h4>
+                  </div>
+                    <div class="card-body">
+                    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                     <section class="mdc-card__supporting-text">
+                     <textarea rows="3"  class="forms-control" ></textarea>
+                     </section>
+                     </div>
+                      <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                          <section class="purchase__card_section">
+                                   <button type="submit" class="mdc-button mdc-button--raised secondary-filled-button text-lowercase mb-0" data-mdc-auto-init="MDCRipple">
+                                        Evaluate now
+                                    </button>
+                           </section>
+                  </div>
+                    </div>
+                    </form>
+                    <h4 class="text-center text-white font-weight-bold">Thank you for participating in this evaluation</h4>
+                </div>
+                </div>
+             </div>
+             </div>
+             </div>
+      </main>
+      <!-- end main page -->
+{% endif %}
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Head of department Area{% endblock %}
+
+{% block body %}
+ {% if app.user.title=="hods" %}
+        {% include('hods/hodsnavbar.html.twig') %}
+         <main class="content">
+        <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+                <div class="mdc-layout-grid__inner">
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-5">
+                    <section class="purchase__card_section">
+                      <p style="color:black;">Welcome
+                      <span class="text-uppercase text-red  font-weight-bold">{{ app.user.Username }}</span>
+                      </p>
+                    </section>
+                  </div>
+                   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                    <section class="purchase__card_section">
+                      <p style="color:black;font-weight:bold;">
+                      <span class="text-uppercase text-red  font-weight-bold">{{ finddeptname }}</span> Department
+                      </p>
+                    </section>
+                  </div>
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
+                    <section class="purchase__card_section d-flex align-item-ends">
+                      {% if app.user.title== "hods" %}
+                        <i class="material-icons mdc-theme--primary">assignment_ind</i> <span style="color:black;font-weight:bold;"> Head of Department </span>
+                      {% endif %}
+                    </section>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+           <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                  <div class="mdc-card py-3 pl-2 d-flex flex-row align-item-center">
+                    <div class="mdc--tile mdc--tile-success rounded">
+                      <i class="material-icons text-white icon-md">class</i>
+                    </div>
+                    <div class="text-wrapper pl-3">
+                         {% if findclass != 0%}
+                          <h3 class="mdc-typography--display1 font-weight-bold mb-1" style="color:black;">{{ findclass }}</h3>
+                         {% else %}
+                           <h3 class="mdc-typography--display1 font-weight-bold mb-2" style="color:black;">0</h3>
+                         {% endif %}
+                           <p class="font-weight-normal mb-0 mt-0" style="color:black;">Courses</p>
+                    </div>
+                  </div>
+                </div>
+             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                  <div class="mdc-card py-3 pl-2 d-flex flex-row align-item-center">
+                    <div class="mdc--tile mdc--tile-success rounded">
+                      <i class="material-icons text-white icon-md">groups</i>
+                    </div>
+                    <div class="text-wrapper pl-3">
+                     {% if app.user.title != "hods" or app.user.title != "superadmin" %}
+                        <h3 class="mdc-typography--display1 font-weight-bold mb-1" style="color:black;">{{ findteacher}}</h3>
+                      {% else %}
+                          <h3 class="mdc-typography--display1 font-weight-bold mb-1" style="color:black;">0</h3>
+                      {% endif %}
+                      <p class="font-weight-normal mb-0 mt-0" style="color:black;">Staff</p>
+                    </div>
+                  </div>
+                </div>
+               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                  <div class="mdc-card py-3 pl-2 d-flex flex-row align-item-center">
+                    <div class="mdc--tile mdc--tile-success rounded">
+                      <i class="material-icons text-white icon-md">apps</i>
+                    </div>
+                    <div class="text-wrapper pl-3">
+                        {% if findsubject  != 0 %}
+                        <h3 class="mdc-typography--display1 font-weight-bold mb-1" style="color:black;">{{ findsubject }}</h3>
+                      {% else %}
+                          <h3 class="mdc-typography--display1 font-weight-bold mb-1" style="color:black;">0</h3>
+                      {% endif %}
+                      <p class="font-weight-normal mb-0 mt-0" style="color:black;">Programs</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                  <div class="mdc-card py-3 pl-2 d-flex flex-row align-item-center">
+                    <div class="text-wrapper pl-3">
+                      <i class="material-icons mdc-theme--primary py-3">assessment</i> <span style="color:black;">Evaluation status</span>
+                     {% if findevaluation == "active" %}
+                        <h3 class="font-weight-bold mb-1 text-lowercase" style="color:black;"> <span class="badge bg-primary">Active</span></h3>
+                      {% else %}
+                          <h3 class="font-weight-bold mb-1 text-lowercase" style="color:black;"><span class="badge bg-primary">Inactive</span></h3>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+      </main>
+
+{% endif %}
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% if app.user.title=="superadmin" %}
+  {% include('admin/adminnavbar.html.twig') %}
+      <main class="content">
+      <!-- start -->
+        <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+                <div class="mdc-layout-grid__inner">
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-9">
+                    <section class="purchase__card_section">
+                      <p><span class="badge bg-primary mr-1">{{ program |length }}</span> <span style="color:black;"> Program registered</span></p>
+                    </section>
+                  </div>
+                     <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
+                          <section class="purchase__card_section">
+                                   <a href="{{path('program_label')}}" class="mdc-button mdc-button--raised primary-filled-button text-lowercase mb-0" data-mdc-auto-init="MDCRipple">
+                                        Add Program
+                                    </a>
+                           </section>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <!--end-->
+
+            <!--start table-->
+          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card table-responsive" style="display:block;">
+                <div class="card" style="padding-top:3%;">
+                 <div class="card-body">
+                    <table id="zero_config" class="table tablesorter mt-5">
+                      <thead class="text-secondary">
+                        <tr>
+                          <th>#</th>
+                          <th class="text-left text-white font-weight-bold">Program Name</th>
+                          <th class="text-left text-white font-weight-bold">Program Short Name</th>
+                          <th class="text-left text-white font-weight-bold">Program Code</th>
+                          <th class="text-left text-white font-weight-bold">Program Credits</th>
+                          <th class="text-left text-white font-weight-bold">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                       {% for temp,show in program %}
+                            <tr>
+                              <td>{{ temp +1 }}</td>
+                              <td class="text-left text-white font-weight-bold">{{ show.pname }}</td>
+                              <td class="text-left text-white font-weight-bold">{{ show.pshort }}</td>
+                              <td class="text-left text-white font-weight-bold">{{ show.pcode }}</td>
+                              <td class="text-left text-white font-weight-bold">{{ show.pcredit }}</td>
+                              <td>
+                                 <a href="/{{show.id}}/edit/college/program/available/name" class="row mdc-button" data-mdc-auto-init="MDCRipple"><i class="material-icons text-green">edit</i></a>
+                              </td>
+
+                            </tr>
+                       {% endfor %}
+                        </tbody>
+                      </table>
+                      </div>
+                 </div>
+              </div>
+            </div>
+            <!--end table -->
+      </main>
+</div>
+        <script>
+        /****************************************
+         *       Basic Table                   *
+         ****************************************/
+        $('#zero_config').DataTable();
+    </script>
+
+{% endif %}
+
+{% endblock %}

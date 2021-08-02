@@ -1,0 +1,173 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% include('student_evaluation/index.html.twig') %}
+      <main class="content">
+      {% if lafesa == "active" %}
+      <!-- start -->
+        <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+                <div class="mdc-layout-grid__inner">
+                {% if status == "semester1"%}
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-9">
+                    <section class="purchase__card_section">
+                      <p><span class="badge bg-primary mr-1">{{ program |length }}</span> <span class="font-weight-bold" style="color:black;">Semester One Course Moduli</span></p>
+                    </section>
+                  </div>
+                {% else %}
+                   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-9">
+                    <section class="purchase__card_section">
+                      <p><span class="badge bg-primary mr-1">{{ program2 |length }}</span> <span class="font-weight-bold" style="color:black;">Semester Two Course Moduli</span></p>
+                    </section>
+                  </div>
+                {% endif %}
+                </div>
+
+              </div>
+            </div>
+            <!--end-->
+          {% if status == 'semester1' %}
+            <!--start table-->
+          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card table-responsive" style="display:block;">
+                <div class="card" style="padding-top:3%;">
+                 <div class="card-body">
+                    <table id="zero_config" class="table  mt-5">
+                      <thead class="text-secondary">
+                        <tr>
+                          <th>#</th>
+                          <th class="text-left text-white font-weight-bold">Moduli Name</th>
+                          <th class="text-left text-white font-weight-bold">Moduli Short Name</th>
+                          <th class="text-left text-white font-weight-bold">Moduli Code</th>
+                          <th class="text-left text-white font-weight-bold">Moduli Credit</th>
+
+                          <th class="text-left text-white font-weight-bold">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% if program | length != 0 %}
+                       {% for temp,show in program %}
+                            <tr>
+                              <td>{{ temp +1 }}</td>
+                              <td class="text-left text-white font-weight-bold">{{ show.pname }}</td>
+                              <td class="text-left text-white font-weight-bold">{{ show.pshort }}</td>
+                              <td class="text-left text-white font-weight-bold">{{ show.pcode }}</td>
+                              <td class="text-left text-white font-weight-bold">{{ show.pcredit }}</td>
+
+                              <td>
+                                 <a href="/student/begin/evaluation/process/final/verify/{{show.id}}" class="row mdc-button mdc-button--raised secondary-filled-button text-lowercase mb-0" data-mdc-auto-init="MDCRipple">Evaluate</a>
+                              </td>
+
+                            </tr>
+                       {% endfor %}
+                       {% endif %}
+                         {% if programt | length != 0 %}
+                       {% for temp,show in programt %}
+                            <tr>
+                              <td>{{ temp +1 }}</td>
+                              <td class="text-left text-white font-weight-bold">{{ show.pname }}</td>
+                              <td class="text-left text-white font-weight-bold">{{ show.pshort }}</td>
+                              <td class="text-left text-white font-weight-bold">{{ show.pcode }}</td>
+                              <td class="text-left text-white font-weight-bold">{{ show.pcredit }}</td>
+
+                              <td>
+                                <span class="badge bg-primary"> Already evaluate</span>
+                              </td>
+
+                            </tr>
+                       {% endfor %}
+                       {% endif %}
+                        </tbody>
+                      </table>
+                      </div>
+                 </div>
+              </div>
+            </div>
+            <!--end table -->
+            {% else %}
+                 <!--start table-->
+          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card table-responsive" style="display:block;">
+                <div class="card" style="padding-top:3%;">
+                 <div class="card-body">
+                    <table id="zero_config" class="table  mt-5">
+                      <thead class="text-secondary">
+                        <tr>
+                          <th class="text-left  font-weight-bold">#</th>
+                          <th class="text-left  font-weight-bold">Moduli Name</th>
+                          <th class="text-left font-weight-bold">Moduli Short Name</th>
+                          <th class="text-left font-weight-bold">Moduli Code</th>
+                          <th class="text-left  font-weight-bold">Moduli Credit</th>
+                          <th class="text-left  font-weight-bold">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                       {% if program2 | length != 0 %}
+                       {% for temp,show in program2 %}
+                            <tr>
+                              <td>{{ temp +1 }}</td>
+                              <td class="text-left text-white font-weight-bold">{{ show.pname }}</td>
+                              <td class="text-left text-white font-weight-bold">{{ show.pshort }}</td>
+                              <td class="text-left text-white font-weight-bold">{{ show.pcode }}</td>
+                              <td class="text-left text-white font-weight-bold">{{ show.pcredit }}</td>
+
+                              <td>
+                                 <a href="/student/begin/evaluation/process/final/verify/{{show.id}}" class="row mdc-button mdc-button--raised secondary-filled-button text-lowercase mb-0" data-mdc-auto-init="MDCRipple">Evaluate</a>
+                              </td>
+
+                            </tr>
+                       {% endfor %}
+                       {% endif %}
+                         {% if programm | length != 0 %}
+                       {% for temp,show in programm %}
+                            <tr>
+                              <td>{{ temp +1 }}</td>
+                              <td class="text-left text-white font-weight-bold">{{ show.pname }}</td>
+                              <td class="text-left text-white font-weight-bold">{{ show.pshort }}</td>
+                              <td class="text-left text-white font-weight-bold">{{ show.pcode }}</td>
+                              <td class="text-left text-white font-weight-bold">{{ show.pcredit }}</td>
+
+                              <td>
+                                <span class="badge bg-primary"> Already evaluate</span>
+                              </td>
+
+                            </tr>
+                       {% endfor %}
+                       {% endif %}
+                        </tbody>
+                      </table>
+                      </div>
+                 </div>
+              </div>
+            </div>
+            <!--end table -->
+            {% endif %}
+            {% else %}
+               <!-- start -->
+        <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+                <div class="mdc-layout-grid__inner">
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-9">
+                    <section class="purchase__card_section">
+                      <p><span class="badge  mr-1" style="background:blue;">Status</span> <span class="font-weight-bold" style="color:red;">Evaluation form is not available at this moment.</span></p>
+                    </section>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--end-->
+            {% endif %}
+      </main>
+
+        <script>
+        /****************************************
+         *       Basic Table                   *
+         ****************************************/
+        $('#zero_config').DataTable();
+    </script>
+
+
+{% endblock %}

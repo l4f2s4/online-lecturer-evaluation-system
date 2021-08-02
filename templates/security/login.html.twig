@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome to evaluation login page!{% endblock %}
+
+{% block body %}
+ <div class="col-sm-8 col-md-6 col-8 col-lg-4 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center" style="font-weight:bold;">Login</h5>
+            <form action="" class="form-signin" method="post">
+                {% if error %}
+                    <div class="alert" style="background:maroon;font-weight:bold;">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+              <div class="form-label-group">
+                <input type="email" value="{{ last_username }}"  name="email" id="inputEmail" placeholder="Enter email" class="form-control" style="color:white;font-weight:bold;" autocomplete="email" required autofocus>
+                <label for="inputEmail">Email address</label>
+              </div>
+
+              <div class="form-label-group">
+               <input type="password" name="password" id="inputPassword" placeholder="Enter password" class="form-control" style="color:white;font-weight:bold;" autocomplete="current-password" required>
+                <label for="inputPassword">Password</label>
+              </div>
+              <div class="mt-2">
+                  <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" >
+              </div>
+              <button class="form-control btn btn-lg  btn-block text-uppercase"  style="background:green;color:white;" type="submit">Login</button>
+              <hr class="my-4" >
+                <a href="{{path('external')}}" class="form-control btn btn-lg btn-forgot btn-block text-lowercase" style="background:purple;color:white;">forgot password?</a>
+               </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--end login builder -->
+{% endblock %}

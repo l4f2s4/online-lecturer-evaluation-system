@@ -1,0 +1,162 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block body %}
+ {% if app.user.title=="superadmin" %}
+        {% include('admin/adminnavbar.html.twig') %}
+         <main class="content">
+        <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+                <div class="mdc-layout-grid__inner">
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8">
+                    <section class="purchase__card_section">
+                      <p style="color:black;">Welcome
+                      <span class="text-uppercase text-red  font-weight-bold">{{ app.user.Username }}</span>
+                      </p>
+                    </section>
+                  </div>
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                    <section class="purchase__card_section d-flex align-item-ends">
+                      {% if app.user.title== "superadmin" %}
+                        <i class="material-icons mdc-theme--primary">assignment_ind</i> <span style="color:black;"> Quality Control Manager </span>
+                      {% else %}
+                            <i class="material-icons mdc-theme--primary">assignment_ind</i> <span style="color:black;">{{app.user.title}}</span>
+                      {% endif %}
+                    </section>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-7">
+              <div class="mdc-layout-grid__inner">
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                  <div class="mdc-card py-3 pl-2 d-flex flex-row align-item-center">
+                    <div class="mdc--tile mdc--tile-success rounded">
+                      <i class="material-icons text-white icon-md">widgets</i>
+                    </div>
+                    <div class="text-wrapper pl-3">
+                      {% if finddept| length != 0 %}
+                        <h3 class="mdc-typography--display1 font-weight-bold mb-1" style="color:black;">{{ finddept | length }}</h3>
+                      {% else %}
+                         <h3 class="mdc-typography--display1 font-weight-bold mb-1" style="color:black;">0</h3>
+                      {% endif %}
+                      <p class="font-weight-normal mb-0 mt-0" style="color:black;">Department</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                  <div class="mdc-card py-3 pl-2 d-flex flex-row align-item-center">
+                    <div class="mdc--tile mdc--tile-primary rounded">
+                      <i class="material-icons text-white icon-md">class</i>
+                    </div>
+                    <div class="text-wrapper pl-3">
+                         {% if findclass|length != 0%}
+                          <h3 class="mdc-typography--display1 font-weight-bold mb-1" style="color:black;">{{ findclass | length }}</h3>
+                         {% else %}
+                           <h3 class="mdc-typography--display1 font-weight-bold mb-2" style="color:black;">0</h3>
+                         {% endif %}
+                           <p class="font-weight-normal mb-0 mt-0" style="color:black;">Courses</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                  <div class="mdc-card py-3 pl-2 d-flex flex-row align-item-center">
+                    <div class="mdc--tile mdc--tile-success rounded">
+                      <i class="material-icons text-white icon-md">groups</i>
+                    </div>
+                    <div class="text-wrapper pl-3">
+                     {% if app.user.title != "teacher" or app.user.title != "superadmin" %}
+                        <h3 class="mdc-typography--display1 font-weight-bold mb-1" style="color:black;">{{ findhods | length }}</h3>
+                      {% else %}
+                          <h3 class="mdc-typography--display1 font-weight-bold mb-1" style="color:black;">0</h3>
+                      {% endif %}
+                      <p class="font-weight-normal mb-0 mt-0" style="color:black;">HoDs</p>
+                    </div>
+                  </div>
+                </div>
+                   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                  <div class="mdc-card py-3 pl-2 d-flex flex-row align-item-center">
+                    <div class="mdc--tile mdc--tile-primary rounded">
+                      <i class="material-icons text-white icon-md">groups</i>
+                    </div>
+                    <div class="text-wrapper pl-3">
+                     {% if app.user.title != "hods" or app.user.title != "superadmin" %}
+                        <h3 class="mdc-typography--display1 font-weight-bold mb-1" style="color:black;">{{ findteacher | length }}</h3>
+                      {% else %}
+                          <h3 class="mdc-typography--display1 font-weight-bold mb-1" style="color:black;">0</h3>
+                      {% endif %}
+                      <p class="font-weight-normal mb-0 mt-0" style="color:black;">Staff</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                  <div class="mdc-card py-3 pl-2 d-flex flex-row align-item-center">
+                    <div class="mdc--tile mdc--tile-success rounded">
+                      <i class="material-icons text-white icon-md">persons</i>
+                    </div>
+                    <div class="text-wrapper pl-3">
+                        {% if findstudent | length != 0 %}
+                        <h3 class="mdc-typography--display1 font-weight-bold mb-1" style="color:black;">{{ findstudent|length }}</h3>
+                      {% else %}
+                          <h3 class="mdc-typography--display1 font-weight-bold mb-1" style="color:black;">0</h3>
+                      {% endif %}
+                      <p class="font-weight-normal mb-0 mt-0" style="color:black;">Students</p>
+                    </div>
+                  </div>
+                </div>
+                   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                  <div class="mdc-card py-3 pl-2 d-flex flex-row align-item-center">
+                    <div class="mdc--tile mdc--tile-success rounded">
+                      <i class="material-icons text-white icon-md">apps</i>
+                    </div>
+                    <div class="text-wrapper pl-3">
+                        {% if findsubject | length != 0 %}
+                        <h3 class="mdc-typography--display1 font-weight-bold mb-1" style="color:black;">{{ findsubject|length }}</h3>
+                      {% else %}
+                          <h3 class="mdc-typography--display1 font-weight-bold mb-1" style="color:black;">0</h3>
+                      {% endif %}
+                      <p class="font-weight-normal mb-0 mt-0" style="color:black;">Programs</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-5">
+              <div class="mdc-card d-flex flex-column">
+                <div class="mdc-layout-grid__inner flex-grow-1">
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4"></div>
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-10 d-flex align-item-center flex-column">
+                    <h2 class="mdc-card__title mdc-card__title--large text-center   mt-2 mb-2" style="color:black;font-weight:bold;">Evaluation Process</h2>
+                    <div id="currentBalanceCircle" class="w-200">
+                      <div class="mdc-card py-3 pl-2 d-flex flex-row align-item-center">
+                        <i class="material-icons mdc-theme--primary py-3">assessment</i>
+                     {% if findevaluation == "active" %}
+                        <h3 class="font-weight-normal mb-1 text-lowercase" style="color:black;">Status <span class="badge bg-primary">Active</span></h3>
+                      {% else %}
+                          <h3 class="font-weight-normal mb-1 text-lowercase" style="color:black;">Status <span class="badge bg-primary">Inactive</span></h3>
+                      {% endif %}
+                       </div>
+                    {% if findevaluation == "active" %}
+                      <div class="mdc-card py-3 pl-2 d-flex flex-row align-item-center">
+                        <i class="material-icons mdc-theme--primary py-3">person_add</i>
+
+                        <h3 class="font-weight-normal mb-1 text-lowercase" style="color:black;">Student <span class="badge bg-primary">{{ mark}} /{{ total|length }}</span></h3>
+
+                       </div>
+                    {% endif %}
+                    </div>
+                  </div>
+
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+{% endif %}
+{% endblock %}

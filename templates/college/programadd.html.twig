@@ -1,0 +1,129 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% if app.user %}
+  {% include('admin/adminnavbar.html.twig') %}
+      <!-- start main page -->
+      <main class="content">
+       <!-- Profile intro -->
+         <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+                <div class="mdc-layout-grid__inner">
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-10">
+                    <section class="purchase__card_section">
+                      <p>
+                       <i class="material-icons mdc-theme--primary mr-1">add_box</i>  <span class="bold" style="color:black;">Program Registered</span>
+                      </p>
+                    </section>
+                  </div>
+                </div>
+              </div>
+            </div>
+           </div>
+       <!-- end intro -->
+
+      <!-- start form -->
+             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+
+               <section class="mdc-card__supporting-text">
+
+               <!-- form start -->
+                <form  action="#" method="post" class="mt-5">
+                  <div class="mdc-layout-grid__inner">
+                  <!-- Name area-->
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+                      <div class="template-demo">
+                        <div id="demo-tf-box-leading-wrapper">
+                          <div id="tf-box-leading-test" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
+                            <i class="material-icons mdc-text-field__icon" tabindex="0">subject</i>
+                            <input required  pattern=".{2,}" type="text" placeholder="Enter program Name" name="pname"  class="mdc-text-field__input text-lowercase">
+                            <div class="mdc-text-field__bottom-line"></div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end program name -->
+                      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+                      <div class="template-demo">
+                        <div id="demo-tf-box-leading-wrapper">
+                          <div id="tf-box-leading-test" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
+                            <input required pattern=".{2,}" type="text" placeholder="Enter program short name" name="pshort"  class="mdc-text-field__input text-lowercase">
+                            <div class="mdc-text-field__bottom-line"></div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end pshort area -->
+                   <!-- pcode Area-->
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+                      <div class="template-demo">
+                        <div id="demo-tf-box-leading-wrapper">
+                          <div id="tf-box-leading-example" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
+                            <input required  type="number" name="pcode" placeholder="Enter program code" class="mdc-text-field__input text-lowercase" aria-controls="name-validation-message">
+                            <div class="mdc-text-field__bottom-line"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <!-- end pcode area-->
+
+                     <!-- pcredit field-->
+                    <div class="mdc-layout-grid__cell  mdc-layout-grid__cell--span-6-desktop">
+                      <div class="template-demo">
+                        <div id="demo-tf-box-wrapper">
+                          <div id="tf-box-example" class="mdc-text-field mdc-text-field--box w-100">
+                            <input required pattern=".{2,}" type="number" id="tf-box" name="pcredit" placeholder="Enter program credit" class="mdc-text-field__input" aria-controls="name-validation-message">
+                            <div class="mdc-text-field__bottom-line"></div>
+                          </div>
+                          <p class="mdc-text-field-helper-text mdc-text-field-helper-text--validation-msg text-red" id="name-validation-msg" style="font-size:.75rem;">
+                               please enter subject credit
+                          </p>
+                        </div>
+                       </div>
+                     </div>
+                          <!-- assign moduli field -->
+                   <div class="mdc-layout-grid__cell  mdc-layout-grid__cell--span-6-desktop">
+                      <div class="mdc-text-field mdc-text-field--box text-secondary w-100" >
+                             <select  class="mdc-text-field__input" id="semester" name="semester">
+                                  <option value="" selected>Select semester</option>
+                                  <option value="semester1">Semester One</option>
+                                  <option value="semester2">Semester Two</option>
+                             </select>
+                        </div>
+                   </div>
+                    <!-- end dept field-->
+
+                     <div class="mdc-layout-grid__cell  mdc-layout-grid__cell--span-7-desktop">
+                          <p class="align-item-center text-red">
+                                   {% for messages in app.flashes('success') %}
+                                      {{ messages}}
+                                   {% endfor %}
+                               </p>
+                     </div>
+
+                    <!-- end dept field-->
+                    <!-- submit action -->
+                     <div class="mdc-layout-grid__cell  mdc-layout-grid__cell--span-7-desktop">
+                          <p class="align-item-center">
+                                   <button type="submit" class="mdc-button mdc-button--raised primary-filled-button text-lowercase mb-0" data-mdc-auto-init="MDCRipple">
+                                        Add
+                                    </button>
+                               </p>
+                     </div>
+                    <!-- end submit action -->
+
+                   </form>
+                 </section>
+                 </div>
+                 </div>
+
+         <!-- end form -->
+
+      </main>
+      <!-- end main page -->
+{% endif %}
+{% endblock %}

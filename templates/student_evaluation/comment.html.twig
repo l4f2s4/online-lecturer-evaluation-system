@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% if app.user %}
+  {% if app.user.title == "superadmin" %}
+      {% include('setting/index.html.twig') %}
+  {% else %}
+      {% include('hods/hodsnavbar.html.twig') %}
+  {% endif %}
+      <!-- start main page -->
+      <main class="content">
+       <!-- Profile intro -->
+         <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+                <div class="mdc-layout-grid__inner">
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                    <section class="purchase__card_section">
+                      <p>
+                       <i class="material-icons mdc-theme--primary mr-1">comment</i>  <span class="font-weight-bold" style="color:black;"> Comments For <span class="text-red font-weight-bold">{{pname}}</span></span>
+                      </p>
+                    </section>
+                </div>
+              </div>
+            </div>
+           </div>
+       <!-- end intro -->
+
+
+
+
+              <!-- Profile intro -->
+         <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+
+                   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                    {% for i in comment %}
+                    <section class="purchase__card_section">
+                      <p>
+                        <span  style="color:black;font-weight:bold;"> {{ i.comments }}</span>
+                      </p>
+                    </section>
+                     {% endfor %}
+                  </div>
+           </div>
+           </div>
+      </main>
+      <!-- end main page -->
+
+{% endif %}
+{% endblock %}

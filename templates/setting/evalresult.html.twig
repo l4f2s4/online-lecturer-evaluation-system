@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% if app.user %}
+  {% if app.user.title == "superadmin" %}
+      {% include('setting/index.html.twig') %}
+  {% else %}
+      {% include('hods/hodsnavbar.html.twig') %}
+  {% endif %}
+      <!-- start main page -->
+      <main class="content">
+       <!-- Profile intro -->
+         <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+                <div class="mdc-layout-grid__inner">
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-9">
+                    <section class="purchase__card_section">
+                      <p>
+                       <i class="material-icons mdc-theme--primary mr-1">assessment</i>  <span class="font-weight-bold" style="color:black;"> Module Evaluation Result For <span class="text-red font-weight-bold">{{pname}}</span></span>
+                      </p>
+                    </section>
+                </div>
+                {% if findcomment != 0 %}
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
+                          <section class="purchase__card_section">
+                                   <a href="/user/result/view/comment/begin/final/verify/{{comment}}" class="mdc-button mdc-button--raised success-filled-button text-lowercase mb-0" data-mdc-auto-init="MDCRipple">
+                                        View Comments
+                                    </a>
+                           </section>
+                     </div>
+                {% endif %}
+              </div>
+            </div>
+           </div>
+       <!-- end intro -->
+
+
+
+
+              <!-- Profile intro -->
+         <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+              <div class="mdc-card">
+                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                    <section class="purchase__card_section">
+                      <p >
+                        <span class="font-weight-bold" style="font-18;color:black;">Academic Staff Name</span>
+                      </p>
+                    </section>
+                  </div>
+
+                   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                    {% for i in userof %}
+                    <section class="purchase__card_section">
+                      <p>
+                        <span  style="color:black;font-weight:bold;"> {{ i.username }}</span>
+                      </p>
+                    </section>
+                     {% endfor %}
+                  </div>
+                    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                    <section class="purchase__card_section">
+                      <p >
+                        <span class="font-weight-bold" style="font-18;color:green;">Number of Student Respond</span>&nbsp;</span><span class="badge bg-primary font-weight-bold" style="color:white;">{{ mark }}</span>
+                      </p>
+                    </section>
+                  </div>
+           </div>
+           </div>
+           <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+              <div class="mdc-card">
+                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                    <section class="purchase__card_section">
+                      <p >
+                        <span class="font-weight-bold" style="font-18;color:black;">Rating Scale</span>
+                      </p>
+                    </section>
+                  </div>
+                   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                    <section class="purchase__card_section">
+                      <p>
+                        <span  style="color:black;font-weight:bold;"> Average Program Score &nbsp;</span><span class="badge bg-primary font-weight-bold" style="color:white;">{{ average }}</span></div>
+                      </p>
+                    </section>
+                    <section class="purchase__card_section">
+                      <p>
+                       {% if average == '1'%}
+                        <span   style="color:black;font-weight:bold;"> Average Program Rank &nbsp;</span><span class="font-weight-bold" style="color:green;">Never</span></div>
+                      {% elseif average == '2' %}
+                         <span  style="color:black;font-weight:bold;">Average Program Rank &nbsp;</span><span class="font-weight-bold" style="color:green;">Rarely</span></div>
+                      {% elseif average == '3' %}
+                          <span  style="color:black;font-weight:bold;">Average Program Rank &nbsp;</span><span class="font-weight-bold" style="color:green;">sometimes</span></div>
+                      {% elseif average == '4' %}
+                          <span  style="color:black;font-weight:bold;">Average Program Rank &nbsp;</span><span class="font-weight-bold" style="color:green;">often</span></div>
+                      {% else %}
+                          <span  style="color:black;font-weight:bold;"> Average Program Rank &nbsp;</span><span class="font-weight-bold" style="color:green">always</span></div>
+                      {% endif %}
+                      </p>
+                    </section>
+                </div>
+              </div>
+
+
+
+      </main>
+      <!-- end main page -->
+
+{% endif %}
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% if app.user %}
+ {% if app.user.title == "superadmin" %}
+      {% include('admin/adminnavbar.html.twig') %}
+  {% endif %}
+      <main class="content mt-2">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card" >
+              <div class="card-body">
+                 <!-- form start -->
+               {{ form_start(form) }}
+                  <div class="row ">
+                    <div class="col-md-6 pr-md-1 mt-3">
+                      <div class="form-group">
+                       {{ form_row(form.regno) }}
+                      </div>
+                    </div>
+                    <div class="col-md-6 px-md-1 mt-3">
+                      <div class="form-group">
+                         {{ form_row(form.username) }}
+                      </div>
+                    </div>
+                    <div class="col-md-6 px-md-1 mt-3">
+                      <div class="form-group">
+                      {{ form_row(form.email) }}
+                      </div>
+                    </div>
+                     <div class="col-md-6 px-md-1 mt-3">
+                      <div class="form-group">
+                       {{ form_row(form.nationality) }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-md-6 px-md-1">
+                      <div class="form-group">
+                      {{ form_row(form.gender) }}
+                      </div>
+                      </div>
+                    <div class="col-md-6 px-md-1">
+                      <div class="form-group">
+                      {{ form_row(form.phoneno) }}
+                      </div>
+                    </div>
+                   </div>
+                    <div class="row mt-3">
+                    <div class="col-md-6 px-md-1">
+                      <div class="form-group">
+                      {{ form_row(form.yos) }}
+                      </div>
+                    </div>
+
+              <div class="card-footer">
+               {{ form_row(form.save) }}
+              </div>
+               {{ form_end(form) }}
+            </div>
+          </div>
+          </div>
+      </main>
+      <!-- end main page -->
+
+{% endif %}
+{% endblock %}

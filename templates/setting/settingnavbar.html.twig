@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% if app.user %}
+ {% if app.user.title == "superadmin" %}
+      {% include('setting/index.html.twig') %}
+  {% endif %}
+      <!-- start main page -->
+      <main class="content">
+       <!-- Profile intro -->
+         <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+                <div class="mdc-layout-grid__inner">
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-10">
+                    <section class="purchase__card_section">
+                      <p>
+                       <i class="material-icons mdc-theme--primary mr-1">assessment</i>  <span class="font-weight-bold" style="color:black;"> Module Evaluation Question</span>
+                      </p>
+                    </section>
+                  </div>
+                </div>
+              </div>
+            </div>
+           </div>
+       <!-- end intro -->
+
+         <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+               <div class="mdc-card table-responsive" >
+                <div class="card" style="padding-top:2%;">
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                          <section class="purchase__card_section">
+                                   <a href="{{path('question_edit')}}" class="mdc-button mdc-button--raised secondary-filled-button text-lowercase mb-0" data-mdc-auto-init="MDCRipple">
+                                        Edit Questions
+                                    </a>
+                           </section>
+                  </div>
+                    <div class="card-body">
+                    <table  class="table tablesorter">
+                      <thead >
+                        <tr >
+                          <th class="text-left text-white font-weight-bold">S/N</th>
+                          <th class="text-left text-white font-weight-bold">Evaluation criteria</th>
+
+                        </tr>
+                      </thead>
+                      <tbody class="font-weight-bold text-red">
+
+                         {% for show in findevaluate %}
+                            <tr>
+                                <td class="text-left text-white font-weight-bold">
+                                       Q1
+                                 </td>
+                                <td class="text-left">
+                                    {{show.q1}}
+                                </td>
+
+                            </tr>
+                             <tr>
+                                   <td class="text-left text-white font-weight-bold">
+                                       Q2
+                                 </td>
+                                <td class="text-left">
+                                    {{show.q2}}
+                                </td>
+
+                            </tr>
+                                <tr>
+                                  <td class="text-left text-white font-weight-bold">
+                                       Q3
+                                 </td>
+                                <td class="text-left">
+                                    {{show.q3}}
+                                </td>
+
+                            </tr>
+                                <tr>
+                                 <td class="text-left text-white font-weight-bold">
+                                       Q4
+                                 </td>
+                                <td class="text-left">
+                                    {{show.q4}}
+                                </td>
+
+                            </tr>
+                                <tr>
+                                  <td class="text-left text-white font-weight-bold">
+                                       Q5
+                                 </td>
+                                <td class="text-left">
+                                    {{show.q5}}
+                                </td>
+
+                            </tr>
+                                <tr>
+                                   <td class="text-left text-white font-weight-bold">
+                                       Q6
+                                 </td>
+                                <td class="text-left">
+                                    {{show.q6}}
+                                </td>
+
+                            </tr>
+                                <tr>
+                                   <td class="text-left text-white font-weight-bold">
+                                       Q7
+                                 </td>
+                                <td class="text-left">
+                                    {{show.q7}}
+                                </td>
+
+                            </tr>
+                                <tr>
+                                 <td class="text-left text-white font-weight-bold">
+                                       Q8
+                                 </td>
+                                <td class="text-left">
+                                    {{show.q8}}
+                                </td>
+
+                            </tr>
+                            <tr>
+                             <td class="text-left text-white font-weight-bold">
+                                       Q9
+                                 </td>
+                                <td class="text-left">
+                                    {{show.q9}}
+                                </td>
+
+                            </tr>
+                         {% endfor %}
+
+                        </tbody>
+                      </table>
+              </div>
+            </div>
+            </div>
+            </div>
+      </main>
+      <!-- end main page -->
+{% endif %}
+{% endblock %}

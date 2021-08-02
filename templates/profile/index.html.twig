@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% if app.user %}
+ {% if app.user.title == "superadmin" %}
+      {% include('admin/adminnavbar.html.twig') %}
+  {% else %}
+      {% include('hods/hodsnavbar.html.twig') %}
+  {% endif %}
+      <main class="content mt-2">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="card" >
+              <div class="card-body">
+                 <!-- form start -->
+               {{ form_start(form) }}
+                  <div class="row ">
+                    <div class="col-md-6 pr-md-1 mt-3">
+                      <div class="form-group">
+                       {{ form_row(form.username) }}
+                      </div>
+                    </div>
+                    <div class="col-md-6 px-md-1 mt-3">
+                      <div class="form-group">
+                         {{ form_row(form.email) }}
+                      </div>
+                    </div>
+                    <div class="col-md-6 px-md-1 mt-3">
+                      <div class="form-group">
+                      {{ form_row(form.nationality) }}
+                      </div>
+                    </div>
+                     <div class="col-md-6 px-md-1 mt-3">
+                      <div class="form-group">
+                       {{ form_row(form.gender) }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-md-6 px-md-1">
+                      <div class="form-group">
+                      {{ form_row(form.maritalstatus) }}
+                      </div>
+                    </div>
+                     <div class="col-md-6 px-md-1">
+                      <div class="form-group">
+                      {{ form_row(form.phoneno) }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                     <div class="col-md-6 px-md-1">
+                      <div class="form-group text-white" >
+                      {{ form_row(form.userimage) }}
+                      </div>
+                    </div>
+                  </div>
+              </div>
+
+              <div class="card-footer">
+               {{ form_row(form.save) }}
+              </div>
+               {{ form_end(form) }}
+            </div>
+          </div>
+      <div class="col-md-4">
+            <div class="card card-user">
+              <div class="card-body">
+                <p class="card-text">
+                  <div class="author">
+                    <p class="text-center">
+                       {% if  app.user.userimage| length !=0 %}
+                            <img src="{{ asset('/web/uploads/photos/' ~ app.user.userimage) }}"  style="border-radius:50%;height:120px;"  alt="not found"  />
+                      {% else %}
+                             <img   src="/images/index.png" style="border-radius:50%;height:120px;" alt="...">
+                      {% endif %}
+                      <h5 class="text-center">{{ app.user.username }}</h5>
+                    </p>
+                    <p class="text-center">
+                    <span class="badge ">
+                        {% if app.user.title == "superadmin" %}
+                         <span> <i class="material-icons mdc-theme--primary">assignment_ind</i>Quality Controller Manager </span>
+                        {% else %}
+                         <i class="material-icons mdc-theme--primary">assignment_ind</i>Head of Department
+                        {% endif %}
+                    </span>
+                    </p>
+                  </div>
+                </p>
+              </div>
+             </div>
+          </div>
+          </div>
+      </main>
+      <!-- end main page -->
+
+{% endif %}
+{% endblock %}

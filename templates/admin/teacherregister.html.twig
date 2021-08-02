@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Staff Registered{% endblock %}
+
+{% block body %}
+ {% if app.user.title=="superadmin" %}
+        {% include('admin/adminnavbar.html.twig') %}
+  <main class="content">
+      <!-- start -->
+        <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+                <div class="mdc-layout-grid__inner">
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-9">
+                    <section class="purchase__card_section ">
+                      <p style="color:black;"><span class="badge bg-primary mr-1">{{ display|length }}</span> Registered Staff</p>
+                    </section>
+                  </div>
+                  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
+                          <section class="purchase__card_section">
+                                   <a href="{{path('teacher_action')}}" class="mdc-button mdc-button--raised success-filled-button text-lowercase mb-0" data-mdc-auto-init="MDCRipple">
+                                        Add
+                                    </a>
+                           </section>
+                     </div>
+                </div>
+              </div>
+            </div>
+            <!--end-->
+
+            <!--start table-->
+           <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card table-responsive" style="display:block;">
+                <div class="card" style="padding-top:3%;">
+                 <div class="card-body">
+                    <table id="zero_config" class="table tablesorter mt-5">
+                      <thead class="text-secondary">
+                        <tr>
+                          <th>#</th>
+                          <th class="text-left text-white font-weight-bold">Full Name</th>
+                          <th class="text-left text-white font-weight-bold">Email</th>
+                          <th class="text-left text-white font-weight-bold">Phoneno</th>
+                          <th class="text-left text-white font-weight-bold">Gender</th>
+                          <th class="text-left text-white font-weight-bold">Nationality</th>
+                          <th class="text-left text-white font-weight-bold">Marital Status</th>
+                          {% if app.user.title=="superadmin" %}
+                             <th class="text-left text-white font-weight-bold">Actions</th>
+                          {% endif %}
+                        </tr>
+                      </thead>
+                      <tbody>
+                       {% for temp,show in display %}
+                            <tr>
+                              <td>{{ temp +1 }}</td>
+                              <td class="text-left">{{ show.username }}</td>
+                              <td>{{ show.email}}</td>
+                              <td>{{ show.phoneno}}</td>
+                              <td>{{ show.gender }}</td>
+                              <td>{{ show.nationality }}</td>
+                              <td>{{ show.maritalstatus }}</td>
+                              {% if app.user.title=="superadmin" %}
+                                   <td><a href="/user/update/area/info/detail/{{ show.id }}" class="row mdc-button" data-mdc-auto-init="MDCRipple"><i class="material-icons text-green">edit</i></a>
+                                   <a href="/evaluate/admin/delete/teacher/{{show.id}}" class="row mdc-button" data-mdc-auto-init="MDCRipple"><i class="material-icons text-red">delete</i></a>
+
+                                   </td>
+                              {% endif %}
+                            </tr>
+                       {% endfor %}
+                        </tbody>
+                      </table>
+                      </div>
+                 </div>
+              </div>
+            </div>
+            <!--end table -->
+      </main>
+</div>
+        <script>
+        /****************************************
+         *       Basic Table                   *
+         ****************************************/
+        $('#zero_config').DataTable();
+    </script>
+
+{% endif %}
+
+{% endblock %}

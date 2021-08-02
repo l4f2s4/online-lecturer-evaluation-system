@@ -1,0 +1,146 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register Administrator{% endblock %}
+
+{% block body %}
+ {% if app.user.title=="superadmin" %}
+        {% include('admin/adminnavbar.html.twig') %}
+<main class="content">
+       <!-- Profile intro -->
+         <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+                <div class="mdc-layout-grid__inner">
+                  <div class="mdc-layout-grid__cell stretch-card  mdc-layout-grid__cell--span-10">
+                    <section class="purchase__card_section">
+                      <span  style="color:black;" >
+                       <i class="material-icons mdc-theme--primary">person_add</i> <span class="mt-1 pl-2"> Quality Controller Manager</span>
+                      </span>
+                    </section>
+                  </div>
+                </div>
+              </div>
+            </div>
+           </div>
+       <!-- end intro -->
+
+       <!-- start form -->
+             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+              <div class="mdc-card">
+               <section class="mdc-card__supporting-text">
+               <!-- form start -->
+                <form  action="#" method="post" class="mt-5">
+                  <div class="mdc-layout-grid__inner">
+                  <!-- Name area-->
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+                      <div class="template-demo">
+                        <div id="demo-tf-box-leading-wrapper">
+                          <div id="tf-box-leading-test" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
+                            <i class="material-icons mdc-text-field__icon" tabindex="0">person</i>
+                            <input required  pattern=".{2,}" type="text" placeholder="Enter First Name" name="fname"  class="mdc-text-field__input text-lowercase">
+                            <div class="mdc-text-field__bottom-line"></div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end first name -->
+                      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+                      <div class="template-demo">
+                        <div id="demo-tf-box-leading-wrapper">
+                          <div id="tf-box-leading-test" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
+                            <input required pattern=".{2,}" type="text" placeholder="Enter Surname" name="lname"  class="mdc-text-field__input text-lowercase">
+                            <div class="mdc-text-field__bottom-line"></div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end second  name &  name area -->
+                   <!-- Email Area-->
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+                      <div class="template-demo">
+                        <div id="demo-tf-box-leading-wrapper">
+                          <div id="tf-box-leading-example" class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon w-100">
+                            <input required  type="email" name="email" placeholder="Enter email" class="mdc-text-field__input text-lowercase" aria-controls="name-validation-message">
+                            <div class="mdc-text-field__bottom-line"></div>
+                          </div>
+                            <p class="text-red" id="name-validation-msg">
+                               {% for messages in app.flashes('email') %}
+                                    {{ messages}}
+                               {% endfor %}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  <!-- end email area-->
+                  <!-- gender field-->
+                   <div class="mdc-layout-grid__cell  mdc-layout-grid__cell--span-6-desktop">
+                        <div class="mdc-text-field mdc-text-field--box text-secondary w-100" >
+                             <select  class="mdc-text-field__input" id="gender" name="gender">
+                                  <option value="" selected>Select gender</option>
+                                  <option value="male">Male</option>
+                                  <option value="female">Female</option>
+                             </select>
+                        </div>
+                   </div>
+                    <!-- end field-->
+                    <!-- marital status field-->
+
+                   <div class="mdc-layout-grid__cell  mdc-layout-grid__cell--span-6-desktop">
+                        <div class="mdc-text-field mdc-text-field--box text-secondary w-100" >
+                             <select  class="mdc-text-field__input" id="marital" name="marital">
+                                  <option value="" selected>Select marital status</option>
+                                  <option value="single">Single</option>
+                                  <option value="married">Married</option>
+                             </select>
+                        </div>
+                   </div>
+                    <!-- end mart status field-->
+                     <!-- Nationality field-->
+                    <div class="mdc-layout-grid__cell  mdc-layout-grid__cell--span-6-desktop">
+                      <div class="template-demo">
+                        <div id="demo-tf-box-wrapper">
+                          <div id="tf-box-example" class="mdc-text-field mdc-text-field--box w-100">
+                            <input required pattern=".{2,}" type="text" id="tf-box" name="national" placeholder="Enter nationality" class="mdc-text-field__input" aria-controls="name-validation-message">
+                            <div class="mdc-text-field__bottom-line"></div>
+                          </div>
+                          <p class="mdc-text-field-helper-text mdc-text-field-helper-text--validation-msg text-red" id="name-validation-msg" style="font-size:.75rem;">
+                               please enter your nationality
+                          </p>
+                        </div>
+                       </div>
+                     </div>
+                     <div class="mdc-layout-grid__cell  mdc-layout-grid__cell--span-7-desktop">
+                          <p class="align-item-center text-red">
+                                   {% for messages in app.flashes('success') %}
+                                      {{ messages}}
+                                   {% endfor %}
+                               </p>
+                     </div>
+
+                    <!-- end dept field-->
+                    <!-- submit action -->
+                     <div class="mdc-layout-grid__cell  mdc-layout-grid__cell--span-7-desktop">
+                          <p class="align-item-center">
+                                   <button type="submit" class="mdc-button mdc-button--raised primary-filled-button text-lowercase mb-0" data-mdc-auto-init="MDCRipple">
+                                        Add
+                                    </button>
+                               </p>
+                     </div>
+                    <!-- end submit action -->
+
+                   </form>
+                   <!-- end form -->
+                 </section>
+                 </div>
+                 </div>
+
+         <!-- end form -->
+
+      </main>
+      <!-- end main page -->
+{% endif %}
+
+{% endblock %}
